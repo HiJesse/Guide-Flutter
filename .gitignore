@@ -1,0 +1,41 @@
+#Check
+/infer-out
+.sonar
+sonar-project.properties
+
+#VS Code
+.vscode
+
+#Eclipse
+.project
+.classpath
+.settings
+
+#IntelliJ IDEA
+.idea
+*.iml
+classes
+.gradle
+
+#Maven
+target
+release.properties
+pom.xml.*
+
+#Command line
+local.properties
+build.xml
+proguard-project.txt
+
+#Mac OS
+.DS_Store
+
+#Flutter
+**/doc/api/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+/build/
