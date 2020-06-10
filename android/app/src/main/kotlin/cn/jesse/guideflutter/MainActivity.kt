@@ -1,4 +1,4 @@
-package com.example.guide_flutter
+package cn.jesse.guideflutter
 
 import io.flutter.embedding.android.FlutterActivity
 
