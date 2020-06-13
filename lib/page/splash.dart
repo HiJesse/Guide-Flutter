@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guide_flutter/page/router.dart';
 import 'package:guide_flutter/util/timer_util.dart';
+import 'package:guide_flutter/widget/text_view.dart';
 
 /// 闪屏页
 class SplashPage extends StatefulWidget {
@@ -46,24 +47,23 @@ class _SplashPageState extends State<SplashPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                GestureDetector(
+                TextView(
+                  '跳过',
+                  textStyle: TextStyle(
+                      fontSize: 12,
+                      color: Colors.black,
+                      decoration: TextDecoration.none),
+                  padding: const EdgeInsets.all(5),
+                  margin: const EdgeInsets.only(right: 5),
                   onTap: () => Router.push(context, Router.HOME,
                       finishCurrentPage: true),
-                  child: Text('跳过',
-                      style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.black,
-                          decoration: TextDecoration.none)),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 5),
-                  child: Text(
-                    '($_count)',
-                    style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.black,
-                        decoration: TextDecoration.none),
-                  ),
+                TextView(
+                  '($_count)',
+                  textStyle: TextStyle(
+                      fontSize: 12,
+                      color: Colors.black,
+                      decoration: TextDecoration.none),
                 ),
               ],
             ),
