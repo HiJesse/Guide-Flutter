@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guide_flutter/page/router.dart';
 import 'package:guide_flutter/util/timer_util.dart';
+import 'package:guide_flutter/widget/linear_layout.dart';
 import 'package:guide_flutter/widget/text_view.dart';
 
 /// 闪屏页
@@ -41,32 +42,29 @@ class _SplashPageState extends State<SplashPage> {
                   decoration: TextDecoration.none),
             ),
           ),
-          Container(
+          LinearLayout(
             alignment: Alignment.bottomCenter,
             margin: const EdgeInsets.only(bottom: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                TextView(
-                  '跳过',
-                  textStyle: TextStyle(
-                      fontSize: 12,
-                      color: Colors.black,
-                      decoration: TextDecoration.none),
-                  padding: const EdgeInsets.all(5),
-                  margin: const EdgeInsets.only(right: 5),
-                  onTap: () => Router.push(context, Router.HOME,
-                      finishCurrentPage: true),
-                ),
-                TextView(
-                  '($_count)',
-                  textStyle: TextStyle(
-                      fontSize: 12,
-                      color: Colors.black,
-                      decoration: TextDecoration.none),
-                ),
-              ],
-            ),
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              TextView(
+                '跳过',
+                textStyle: TextStyle(
+                    fontSize: 12,
+                    color: Colors.black,
+                    decoration: TextDecoration.none),
+                padding: const EdgeInsets.all(5),
+                margin: const EdgeInsets.only(right: 5),
+                onTap: () => Router.push(context, Router.HOME, finishCurrentPage: true),
+              ),
+              TextView(
+                '($_count)',
+                textStyle: TextStyle(
+                    fontSize: 12,
+                    color: Colors.black,
+                    decoration: TextDecoration.none),
+              ),
+            ],
           ),
         ],
       ),
