@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guide_flutter/page/home/home.dart';
 import 'package:guide_flutter/page/splash.dart';
 import 'package:guide_flutter/util/string_util.dart';
 
@@ -25,7 +26,7 @@ class Router {
         }
       case HOME:
         {
-          widget = Text('home');
+          widget = HomePage();
           break;
         }
     }
