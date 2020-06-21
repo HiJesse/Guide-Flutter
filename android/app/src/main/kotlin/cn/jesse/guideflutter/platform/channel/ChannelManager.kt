@@ -11,12 +11,14 @@ import io.flutter.embedding.engine.FlutterEngine
 class ChannelManager constructor(var application: Application, flutterEngine: FlutterEngine) {
 
     private var basicChannelManager: BasicChannelManager = BasicChannelManager(application, flutterEngine)
+    private var methodChannelManager: MethodChannelManager = MethodChannelManager(application, flutterEngine)
 
     /**
      * 注册通用功能
      */
     fun registerCommonChannel() {
         basicChannelManager.registerCommonChannels()
+        methodChannelManager.registerCommonChannels()
     }
 
 }

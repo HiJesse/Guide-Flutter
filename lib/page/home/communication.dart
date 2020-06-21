@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guide_flutter/platform/channel/basic_channel_manager.dart';
+import 'package:guide_flutter/platform/channel/method_channel_manager.dart';
 import 'package:guide_flutter/util/check_util.dart';
 import 'package:guide_flutter/widget/linear_layout.dart';
 import 'package:guide_flutter/widget/text_view.dart';
@@ -32,6 +33,24 @@ class CommunicationPage extends StatelessWidget {
                 margin: EdgeInsets.only(left: 5),
                 onTap: () => BasicChannelManager.getPlatformAppInfo()
                     .then((value) => this._basicChannelAppInfo(value))),
+          ],
+        ),
+        TextView(
+          'MethodChannel',
+          alignment: Alignment.centerLeft,
+          margin: const EdgeInsets.all(10),
+          textStyle: TextStyle(fontSize: 15),
+        ),
+        LinearLayout(
+          margin: EdgeInsets.only(left: 10, right: 10),
+          children: <Widget>[
+            TextView(
+              'DeviceID',
+              padding: EdgeInsets.all(10),
+              backgroundColor: Colors.grey,
+              onTap: () => MethodChannelManager.getDeviceID()
+                  .then((value) => BasicChannelManager.toast(value)),
+            ),
           ],
         ),
       ],
