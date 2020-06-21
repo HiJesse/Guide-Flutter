@@ -16,6 +16,7 @@ import io.flutter.plugin.common.StandardMessageCodec
 class BasicChannelManager constructor(private var application: Application, private var flutterEngine: FlutterEngine) {
     companion object {
         const val CHANNEL_TOAST = "channel_toast"
+        const val CHANNEL_APP_INFO = "channel_app_info"
     }
 
     /**
@@ -23,6 +24,7 @@ class BasicChannelManager constructor(private var application: Application, priv
      */
     fun registerCommonChannels() {
         registerToast()
+        registerAppInfo()
     }
 
     /**
@@ -37,6 +39,22 @@ class BasicChannelManager constructor(private var application: Application, priv
                 Toast.makeText(application, map["message"].toString(), if (longDuration) Toast.LENGTH_LONG else Toast.LENGTH_SHORT).show()
             }
 
+        }
+    }
+
+    /**
+     * 注册监听回调app信息
+     */
+    private fun registerAppInfo() {
+        val basicMessageChannel = BasicMessageChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL_APP_INFO, StandardMessageCodec.INSTANCE)
+        basicMessageChannel.setMessageHandler { _, reply ->
+            val result = mapOf(
+                    "appVersionName" to "v1.0.0",
+                    "appVersionCode" to "1",
+                    "flutterVersionName" to "v0.5.0",
+                    "flutterVersionCode" to "12"
+            )
+            reply.reply(result)
         }
     }
 }

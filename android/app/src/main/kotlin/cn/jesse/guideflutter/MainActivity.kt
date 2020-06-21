@@ -2,7 +2,7 @@ package cn.jesse.guideflutter
 
 import android.os.Handler
 import android.util.Log
-import cn.jesse.guideflutter.platform.channel.BasicChannelManager
+import cn.jesse.guideflutter.platform.channel.ChannelManager
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.BasicMessageChannel
@@ -18,8 +18,8 @@ class MainActivity : FlutterActivity() {
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
 
-        val manager = BasicChannelManager(application, flutterEngine)
-        manager.registerCommonChannels()
+        val channelManager = ChannelManager(application, flutterEngine)
+        channelManager.registerCommonChannel()
 
         val basicMessageChannel = BasicMessageChannel(flutterEngine!!.dartExecutor!!.binaryMessenger, "basic_channel", StringCodec.INSTANCE)
         // Receive messages from Dart
