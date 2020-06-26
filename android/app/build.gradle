@@ -55,4 +55,6 @@ flutter {
 
 dependencies {
     implementation rootProject.ext.dep["kotlin"]
+    implementation rootProject.ext.dep["magic-box"]
+    implementation rootProject.ext.dep["logger"]
 }
