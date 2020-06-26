@@ -3,7 +3,6 @@ package cn.jesse.guideflutter.platform.channel.method
 import android.app.Application
 import android.text.TextUtils
 import io.flutter.embedding.engine.FlutterEngine
-import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 
 /**
@@ -26,7 +25,7 @@ class MethodDeviceInfoChannel constructor(private var application: Application, 
             }
 
             if (METHOD_GET_DEVICE_ID == call.method) {
-                getDeviceID(call, result)
+                getDeviceID(result)
             }
         }
     }
@@ -34,7 +33,7 @@ class MethodDeviceInfoChannel constructor(private var application: Application, 
     /**
      * 获取设备ID
      */
-    private fun getDeviceID(call: MethodCall, result: MethodChannel.Result) {
+    private fun getDeviceID(result: MethodChannel.Result) {
         result.success("0000000000000")
     }
 }
