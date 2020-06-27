@@ -2,6 +2,7 @@ package cn.jesse.guideflutter.platform.channel.method
 
 import android.app.Application
 import android.text.TextUtils
+import cn.jesse.guideflutter.platform.channel.IChannel
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
@@ -11,7 +12,7 @@ import io.flutter.plugin.common.MethodChannel
  *
  * @author jesse
  */
-class MethodSecurityChannel constructor(private var application: Application, private var flutterEngine: FlutterEngine) : IMethodChannel {
+class SecurityChannel constructor(private var application: Application, private var flutterEngine: FlutterEngine) : IChannel {
 
     companion object {
         const val CHANNEL_SECURITY = "channel_security"

@@ -2,6 +2,7 @@ package cn.jesse.guideflutter.platform.channel.method
 
 import android.app.Application
 import android.text.TextUtils
+import cn.jesse.guideflutter.platform.channel.IChannel
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 
@@ -10,7 +11,7 @@ import io.flutter.plugin.common.MethodChannel
  *
  * @author jesse
  */
-class MethodDeviceInfoChannel constructor(private var application: Application, private var flutterEngine: FlutterEngine) : IMethodChannel {
+class DeviceInfoChannel constructor(private var application: Application, private var flutterEngine: FlutterEngine) : IChannel {
 
     companion object {
         const val CHANNEL_DEVICE_INFO = "channel_device_info"

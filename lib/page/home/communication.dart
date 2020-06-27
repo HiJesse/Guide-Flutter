@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guide_flutter/platform/channel/basic_channel_manager.dart';
+import 'package:guide_flutter/platform/channel/event/event_performance_channel.dart';
 import 'package:guide_flutter/platform/channel/method/method_device_info_Channel.dart';
 import 'package:guide_flutter/platform/channel/method/method_security_channel.dart';
 import 'package:guide_flutter/util/check_util.dart';
@@ -63,6 +64,30 @@ class CommunicationPage extends StatelessWidget {
             ),
           ],
         ),
+        TextView(
+          'EventChannel',
+          alignment: Alignment.centerLeft,
+          margin: const EdgeInsets.all(10),
+          textStyle: TextStyle(fontSize: 15),
+        ),
+        LinearLayout(
+          margin: EdgeInsets.only(left: 10, right: 10),
+          children: <Widget>[
+            TextView(
+              'listenPerformance',
+              padding: EdgeInsets.all(10),
+              backgroundColor: Colors.grey,
+              onTap: () => this._monitorPerformance(),
+            ),
+            TextView(
+              'cancel',
+              padding: EdgeInsets.all(10),
+              margin: EdgeInsets.only(left: 5),
+              backgroundColor: Colors.grey,
+              onTap: () => EventPerformanceChannel.instance.stop(),
+            ),
+          ],
+        ),
       ],
     );
   }
@@ -85,6 +110,7 @@ class CommunicationPage extends StatelessWidget {
     BasicChannelManager.toast(msg);
   }
 
+  /// 获取加密信息
   void _methodChannelEncodeString(Map map) {
     if (CheckUtil.isMapEmpty(map)) {
       return;
@@ -98,5 +124,16 @@ class CommunicationPage extends StatelessWidget {
         map['base64'];
 
     BasicChannelManager.toast(msg);
+  }
+
+  void _monitorPerformance() {
+    EventPerformanceChannel.instance.start();
+    EventPerformanceChannel.instance
+        .addListener(PerformanceListener(onEvent: (event) {
+      Map performanceData = event as Map<dynamic, dynamic>;
+      print(performanceData.toString());
+    }, onError: (context) {
+      // unused
+    }));
   }
 }
